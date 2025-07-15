@@ -45,8 +45,7 @@ export class AuthService {
       lastName,
       username,
       password,
-      participating: false,
-      organizer: false
+      admin: false
     })
   }
 
