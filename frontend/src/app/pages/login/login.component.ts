@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           })
         )
         .subscribe(() => {
-          this.router.navigate(['/user-dashboard'])
+          this.router.navigate(['/admin-dashboard'])
         })
     }
   }

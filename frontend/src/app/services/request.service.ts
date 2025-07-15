@@ -50,4 +50,12 @@ export class RequestService {
   remove(id: string): Observable<Request> {
     return this.http.delete<Request>(`${environment.apiUrl}/api/requests/${id}`)
   }
+
+  approve(id: string): Observable<Request> {
+    return this.http.patch<Request>(`${environment.apiUrl}/api/requests/approve/${id}`, {})
+  }
+
+  reject(id: string): Observable<Request> {
+    return this.http.patch<Request>(`${environment.apiUrl}/api/requests/reject/${id}`, {})
+  }
 }

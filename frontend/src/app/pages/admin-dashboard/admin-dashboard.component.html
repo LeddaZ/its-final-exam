@@ -1,0 +1,15 @@
+<div class="tw-grid tw-p-10">
+  <h2 class="tw-text-3xl tw-font-bold tw-leading-none tw-tracking-tight tw-py-5">
+    Richieste in attesa di approvazione
+  </h2>
+  <app-request-modal (addRequest)="addRequest($event)"></app-request-modal>
+  <div class="tw-grid tw-grid-cols-2">
+    <app-request-item
+      *ngFor="let request of requests$ | async"
+      [request]="request"
+      [user]="currentUser$ | async"
+      (editRequest)="onEditRequest($event)"
+      (deleteRequestEvent)="onDeleteRequest()">
+    </app-request-item>
+  </div>
+</div>

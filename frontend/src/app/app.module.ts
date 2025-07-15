@@ -15,6 +15,7 @@ import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.co
 import { AuthInterceptor } from './utils/auth.interceptor'
 import { EditRequestModalComponent } from './components/edit-request-modal/edit-request-modal.component'
 import { RequestModalComponent } from './components/request-modal/request.component'
+import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component'
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { RequestModalComponent } from './components/request-modal/request.compon
     RegisterComponent,
     RequestModalComponent,
     UserDashboardComponent,
-    RequestItemComponent
+    RequestItemComponent,
+    AdminDashboardComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, ReactiveFormsModule],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],

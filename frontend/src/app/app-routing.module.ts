@@ -4,6 +4,8 @@ import { authGuard } from './guards/auth.guard'
 import { LoginComponent } from './pages/login/login.component'
 import { RegisterComponent } from './pages/register/register.component'
 import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component'
+import { adminGuard } from './guards/admin.guard'
+import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component'
 
 const routes: Routes = [
   {
@@ -15,6 +17,11 @@ const routes: Routes = [
     path: 'user-dashboard',
     canActivate: [authGuard],
     component: UserDashboardComponent
+  },
+  {
+    path: 'admin-dashboard',
+    canActivate: [authGuard, adminGuard],
+    component: AdminDashboardComponent
   },
   {
     path: 'login',
