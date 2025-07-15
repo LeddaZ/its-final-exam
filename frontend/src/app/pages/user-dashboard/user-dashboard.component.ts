@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'
 import { ReplaySubject, Subject, switchMap, takeUntil } from 'rxjs'
 import { RequestService } from '../../services/request.service'
+import { AuthService } from '../../services/auth.service'
 
 @Component({
   selector: 'app-user-dashboard',
@@ -15,7 +16,12 @@ export class UserDashboardComponent {
     takeUntil(this.destroyed$)
   )
 
-  constructor(protected requestSrv: RequestService) {}
+  currentUser$ = this.authSrv.currentUser$
+
+  constructor(
+    protected requestSrv: RequestService,
+    protected authSrv: AuthService
+  ) {}
 
   addRequest(eventData: [string, string, number, number, string]) {
     this.requestSrv
