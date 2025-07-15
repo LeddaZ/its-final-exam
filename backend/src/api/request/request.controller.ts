@@ -17,6 +17,16 @@ export const list = async (req: Request, res: Response, next: NextFunction) => {
   }
 }
 
+export const getById = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { id } = req.params
+    const results = await requestService.getById(id)
+    res.json(results)
+  } catch (err) {
+    next(err)
+  }
+}
+
 export const add = async (
   req: TypedRequest<CreateRequestDTO>,
   res: Response,
