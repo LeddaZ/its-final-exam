@@ -4,7 +4,7 @@
   </h2>
   <button
     class="tw-mx-auto tw-my-1 tw-btn tw-btn-square tw-btn-secondary tw-w-48"
-    onclick="match_modal.showModal()">
+    onclick="request_modal.showModal()">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       class="tw-h-5 tw-w-5"
@@ -19,7 +19,7 @@
     </svg>
     Nuova richiesta
   </button>
-  <!-- <app-match-modal (addRequest)="addRequest($event)"></app-match-modal> -->
+  <app-request-modal (addRequest)="addRequest($event)"></app-request-modal>
   <div>
     <app-request-item
       *ngFor="let request of requests$ | async"

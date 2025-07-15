@@ -14,14 +14,19 @@ export class RequestService {
     return this.http.get<any[]>(`${environment.apiUrl}/api/requests`)
   }
 
-  add(date: string, playerA: string, playerB: string): Observable<Request> {
+  add(
+    category: string,
+    item: string,
+    quantity: number,
+    unitPrice: number,
+    reason: string
+  ): Observable<Request> {
     return this.http.post<Request>(`${environment.apiUrl}/api/requests`, {
-      date,
-      playerA,
-      playerB,
-      scoreA: 0,
-      scoreB: 0,
-      played: false
+      category,
+      item,
+      quantity,
+      unitPrice,
+      reason
     })
   }
 

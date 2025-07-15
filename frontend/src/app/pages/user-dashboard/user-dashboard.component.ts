@@ -17,10 +17,12 @@ export class UserDashboardComponent {
 
   constructor(protected requestSrv: RequestService) {}
 
-  addRequest(eventData: [string, string, string]) {
-    this.requestSrv.add(eventData[0], eventData[1], eventData[2]).subscribe(() => {
-      this._requests$.next()
-    })
+  addRequest(eventData: [string, string, number, number, string]) {
+    this.requestSrv
+      .add(eventData[0], eventData[1], eventData[2], eventData[3], eventData[4])
+      .subscribe(() => {
+        this._requests$.next()
+      })
   }
 
   ngOnInit(): void {

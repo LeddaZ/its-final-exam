@@ -15,6 +15,7 @@ import { RegisterComponent } from './pages/register/register.component'
 import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component'
 import { AuthInterceptor } from './utils/auth.interceptor'
 import { EditRequestModalComponent } from './components/edit-request-modal/edit-request-modal.component'
+import { RequestModalComponent } from './components/request-modal/request.component'
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { EditRequestModalComponent } from './components/edit-request-modal/edit-
     IfAuthenticatedDirective,
     NavbarComponent,
     RegisterComponent,
+    RequestModalComponent,
     UserDashboardComponent,
     ParticipantsComponent,
     RequestItemComponent
