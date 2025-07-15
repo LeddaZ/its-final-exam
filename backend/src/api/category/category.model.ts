@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 import { Category } from './category.entity'
 
 const categorySchema = new mongoose.Schema<Category>({
-  description: String,
+  description: String
 })
 
 categorySchema.set('toJSON', {

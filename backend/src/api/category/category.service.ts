@@ -30,10 +30,7 @@ export class CategoryService {
     return existing
   }
 
-  async update(
-    id: string,
-    description: string
-  ): Promise<Category> {
+  async update(id: string, description: string): Promise<Category> {
     const existing = await CategoryModel.findOne({
       _id: id
     })

@@ -16,7 +16,11 @@ export const list = async (_: Request, res: Response, next: NextFunction) => {
   }
 }
 
-export const add = async (req: TypedRequest<CreateRequestDTO>, res: Response, next: NextFunction) => {
+export const add = async (
+  req: TypedRequest<CreateRequestDTO>,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const user = req.user
     if (!user) {
