@@ -20,7 +20,7 @@
     Nuova categoria
   </button>
   <app-category-modal (addCategory)="addCategory($event)"></app-category-modal>
-  <div class="tw-grid tw-grid-cols-2" *ngIf="categories$ | async as requests; else noRequests">
+  <div *ngIf="categories$ | async as requests; else noRequests">
     <div *ngIf="requests.length > 0; else noRequests">
       <app-category-item
         *ngFor="let category of categories$ | async"
@@ -34,6 +34,6 @@
 
 <ng-template #noRequests>
   <div class="tw-p-10 tw-text-center">
-    <p class="tw-font-semibold">Nessuna richiesta in attesa di approvazione.</p>
+    <p class="tw-font-semibold">Nessuna categoria.</p>
   </div>
 </ng-template>

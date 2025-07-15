@@ -3,7 +3,7 @@
     Richieste in attesa di approvazione
   </h2>
   <app-request-modal (addRequest)="addRequest($event)"></app-request-modal>
-  <div class="tw-grid tw-grid-cols-2" *ngIf="requests$ | async as requests; else noRequests">
+  <div *ngIf="requests$ | async as requests; else noRequests">
     <div *ngIf="requests.length > 0; else noRequests">
       <app-request-item
         *ngFor="let request of requests"
