@@ -69,8 +69,12 @@ export const remove = async (
     if (!user) {
       throw new UserNotFoundError()
     }
+    const userId = user.id
+    if (!userId) {
+      throw new UnauthorizedError()
+    }
     const { id } = req.params
-    const saved = await requestService.remove(id)
+    const saved = await requestService.remove(id, userId)
     res.status(200).json(saved)
   } catch (err) {
     next(err)

@@ -29,13 +29,18 @@ export class RequestService {
     return (await this.getById(newItem.id))!
   }
 
-  async remove(id: string): Promise<Request> {
-    // TODO solo se propria e da approvare
+  async remove(id: string, userId: string): Promise<Request> {
     const existing = await RequestModel.findOne({
       _id: id
     })
     if (!existing) {
       throw new NotFoundError()
+    }
+
+    const requester = existing.requester
+
+    if (userId !== requester.toString() || existing.status !== 'pending') {
+      throw new UnauthorizedError()
     }
 
     await RequestModel.deleteOne({
