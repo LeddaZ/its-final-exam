@@ -11,10 +11,10 @@ export const adminGuard: CanActivateFn = () => {
     filter((userState) => userState !== undefined),
     take(1),
     map((user) => {
-      if (user && user.organizer) {
+      if (user && user.admin) {
         return true
       } else {
-        router.navigate(['/event-list'])
+        router.navigate(['/user-dashboard'])
         return false
       }
     })

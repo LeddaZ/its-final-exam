@@ -4,9 +4,6 @@ import { authGuard } from './guards/auth.guard'
 import { LoginComponent } from './pages/login/login.component'
 import { RegisterComponent } from './pages/register/register.component'
 import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component'
-import { ParticipantsComponent } from './pages/participants/participants.component'
-import { participantGuard } from './guards/participant.guard'
-import { organizerGuard } from './guards/organizer.guard'
 
 const routes: Routes = [
   {
@@ -19,21 +16,6 @@ const routes: Routes = [
     canActivate: [authGuard],
     component: UserDashboardComponent
   },
-  // {
-  //   path: 'participants',
-  //   canActivate: [authGuard, participantGuard],
-  //   component: ParticipantsComponent
-  // },
-  // {
-  //   path: 'matches',
-  //   canActivate: [authGuard, participantGuard],
-  //   component: MatchesComponent
-  // },
-  // {
-  //   path: 'manage-matches',
-  //   canActivate: [authGuard, organizerGuard],
-  //   component: ManageMatchesComponent
-  // },
   {
     path: 'login',
     component: LoginComponent

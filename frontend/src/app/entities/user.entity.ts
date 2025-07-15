@@ -3,6 +3,5 @@ export interface User {
   firstName: string
   lastName: string
   fullName: string
-  participating: boolean
-  organizer: boolean
+  admin: boolean
 }
