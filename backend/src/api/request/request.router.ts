@@ -1,13 +1,23 @@
 import express from 'express'
 import { isAuthenticated } from '../../utils/auth/authenticated-middleware'
 import { validate } from '../../utils/validation-middleware'
-import { add, approve, getById, list, reject, remove, update } from './request.controller'
+import {
+  add,
+  approve,
+  getById,
+  list,
+  listPending,
+  reject,
+  remove,
+  update
+} from './request.controller'
 import { CreateRequestDTO } from './request.dto'
 
 const router = express.Router()
 
 router.use(isAuthenticated)
 router.get('/', list)
+router.get('/pending', listPending)
 router.get('/:id', getById)
 router.post('/', validate(CreateRequestDTO), add)
 router.delete('/:id', remove)

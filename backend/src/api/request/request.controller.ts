@@ -18,6 +18,19 @@ export const list = async (req: Request, res: Response, next: NextFunction) => {
   }
 }
 
+export const listPending = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const user = req.user
+    if (!user!.admin) {
+      throw new UnauthorizedError()
+    }
+    const results = await requestService.listPending()
+    res.json(results)
+  } catch (err) {
+    next(err)
+  }
+}
+
 export const getById = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params

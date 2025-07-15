@@ -23,6 +23,14 @@ export class RequestService {
     }
   }
 
+  async listPending(): Promise<Request[]> {
+    return await RequestModel.find({ status: 'pending' })
+      .sort({ date: 1 })
+      .populate('requester')
+      .populate('approver')
+      .populate('category')
+  }
+
   async add(request: Partial<Omit<Request, 'id'>>): Promise<Request> {
     const newItem = await RequestModel.create({
       ...request

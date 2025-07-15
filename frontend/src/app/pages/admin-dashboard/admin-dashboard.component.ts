@@ -12,7 +12,7 @@ export class AdminDashboardComponent {
 
   protected _requests$ = new ReplaySubject<void>()
   requests$ = this._requests$.pipe(
-    switchMap(() => this.requestSrv.fetch()),
+    switchMap(() => this.requestSrv.fetchPending()),
     takeUntil(this.destroyed$)
   )
 

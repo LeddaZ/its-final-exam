@@ -11,7 +11,11 @@ export class RequestService {
   constructor(private http: HttpClient) {}
 
   fetch() {
-    return this.http.get<any[]>(`${environment.apiUrl}/api/requests`)
+    return this.http.get<Request[]>(`${environment.apiUrl}/api/requests`)
+  }
+
+  fetchPending(): Observable<Request[]> {
+    return this.http.get<Request[]>(`${environment.apiUrl}/api/requests/pending`)
   }
 
   add(
