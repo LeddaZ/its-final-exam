@@ -1,10 +1,24 @@
 import { NotFoundError } from '../../errors/not-found'
 import { RequestModel } from './request.model'
 import { Request } from './request.entity'
+import { UserModel } from '../user/user.model'
 
 export class RequestService {
-  async list(): Promise<Request[]> {
-    return await RequestModel.find().sort({ dueDate: 1 }).populate('requester').populate('approver')
+  async list(userId: string | undefined): Promise<Request[]> {
+    const user = await UserModel.findById(userId)
+    if (user!.admin) {
+      return await RequestModel.find()
+        .sort({ date: 1 })
+        .populate('requester')
+        .populate('approver')
+        .populate('category')
+    } else {
+      return await RequestModel.find({ requester: userId })
+        .sort({ date: 1 })
+        .populate('requester')
+        .populate('approver')
+        .populate('category')
+    }
   }
 
   async add(request: Partial<Omit<Request, 'id'>>): Promise<Request> {

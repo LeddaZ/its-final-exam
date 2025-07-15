@@ -1,10 +1,6 @@
-import { IsDateString, IsEnum, IsMongoId, IsNumber, IsString } from 'class-validator'
-import { RequestStatus } from '../../utils/enums'
+import { IsMongoId, IsNumber, IsString } from 'class-validator'
 
 export class CreateRequestDTO {
-  @IsDateString()
-  date: string
-
   @IsMongoId()
   category: string
 
@@ -19,10 +15,4 @@ export class CreateRequestDTO {
 
   @IsString()
   reason: string
-
-  @IsEnum(RequestStatus)
-  status: RequestStatus
-
-  @IsMongoId()
-  requester: string
 }

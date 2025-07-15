@@ -7,9 +7,10 @@ import { Request as RequestEntity } from './request.entity'
 import { UserNotFoundError } from '../../errors/user-not-found'
 import { RequestStatus } from '../../utils/enums'
 
-export const list = async (_: Request, res: Response, next: NextFunction) => {
+export const list = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const results = await requestService.list()
+    const user = req.user
+    const results = await requestService.list(user!.id)
     res.json(results)
   } catch (err) {
     next(err)
