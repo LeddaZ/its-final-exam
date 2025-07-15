@@ -6,6 +6,7 @@ import { CreateRequestDTO } from './request.dto'
 import { Request as RequestEntity } from './request.entity'
 import { UserNotFoundError } from '../../errors/user-not-found'
 import { RequestStatus } from '../../utils/enums'
+import { UnauthorizedError } from '../../errors/unauthorized'
 
 export const list = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -82,9 +83,21 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
     if (!user) {
       throw new UserNotFoundError()
     }
+    const userId = user.id
+    if (!userId) {
+      throw new UnauthorizedError()
+    }
     const { id } = req.params
     const { category, item, quantity, unitPrice, reason } = req.body
-    const updated = await requestService.update(id, category, item, quantity, unitPrice, reason)
+    const updated = await requestService.update(
+      id,
+      userId,
+      category,
+      item,
+      quantity,
+      unitPrice,
+      reason
+    )
     res.json(updated)
   } catch (err) {
     next(err)

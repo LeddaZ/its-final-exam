@@ -2,6 +2,7 @@ import { NotFoundError } from '../../errors/not-found'
 import { RequestModel } from './request.model'
 import { Request } from './request.entity'
 import { UserModel } from '../user/user.model'
+import { UnauthorizedError } from '../../errors/unauthorized'
 
 export class RequestService {
   async list(userId: string | undefined): Promise<Request[]> {
@@ -46,6 +47,7 @@ export class RequestService {
 
   async update(
     id: string,
+    userId: string,
     category: string,
     item: string,
     quantity: number,
@@ -57,6 +59,12 @@ export class RequestService {
     })
     if (!existing) {
       throw new NotFoundError()
+    }
+
+    const requester = existing.requester
+
+    if (userId !== requester.toString()) {
+      throw new UnauthorizedError()
     }
 
     Object.assign(existing, {

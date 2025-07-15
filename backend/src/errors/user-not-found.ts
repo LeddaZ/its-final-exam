@@ -16,7 +16,7 @@ export const userNotFoundHandler = (
     res.status(400)
     res.json({
       error: 'UserNotFoundError',
-      message: 'User not found'
+      message: err.message
     })
   } else {
     next(err)

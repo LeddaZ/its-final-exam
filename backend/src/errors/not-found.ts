@@ -11,7 +11,7 @@ export const notFoundHandler = (err: Error, _req: Request, res: Response, next: 
     res.status(404)
     res.json({
       error: 'NotFoundError',
-      message: 'Entity not found'
+      message: err.message
     })
   } else {
     next(err)
