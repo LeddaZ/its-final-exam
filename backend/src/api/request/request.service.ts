@@ -3,6 +3,7 @@ import { RequestModel } from './request.model'
 import { Request } from './request.entity'
 import { UserModel } from '../user/user.model'
 import { UnauthorizedError } from '../../errors/unauthorized'
+import { Types } from 'mongoose'
 
 export class RequestService {
   async list(userId: string | undefined): Promise<Request[]> {
@@ -73,16 +74,29 @@ export class RequestService {
     }
 
     Object.assign(existing, {
-      date: existing.date,
       category,
       item,
       quantity,
       unitPrice,
-      reason,
-      status: existing.status,
-      requester: existing.requester,
-      approvalDate: existing.approvalDate,
-      approver: existing.approver
+      reason
+    })
+    await existing.save()
+    const updated = await this.getById(id)
+    return updated!
+  }
+
+  async setStatus(id: string, userId: string, status: string): Promise<Request> {
+    const existing = await RequestModel.findOne({
+      _id: id
+    })
+    if (!existing) {
+      throw new NotFoundError()
+    }
+
+    Object.assign(existing, {
+      status: status,
+      approver: new Types.ObjectId(userId),
+      approvalDate: new Date().toISOString()
     })
     await existing.save()
     const updated = await this.getById(id)

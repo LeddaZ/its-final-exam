@@ -107,3 +107,45 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
     next(err)
   }
 }
+
+export const approve = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const user = req.user
+    if (!user) {
+      throw new UserNotFoundError()
+    }
+    if (!user.admin) {
+      throw new UnauthorizedError()
+    }
+    const userId = user.id
+    if (!userId) {
+      throw new UnauthorizedError()
+    }
+    const { id } = req.params
+    const updated = await requestService.setStatus(id, userId, 'approved')
+    res.json(updated)
+  } catch (err) {
+    next(err)
+  }
+}
+
+export const reject = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const user = req.user
+    if (!user) {
+      throw new UserNotFoundError()
+    }
+    if (!user.admin) {
+      throw new UnauthorizedError()
+    }
+    const userId = user.id
+    if (!userId) {
+      throw new UnauthorizedError()
+    }
+    const { id } = req.params
+    const updated = await requestService.setStatus(id, userId, 'rejected')
+    res.json(updated)
+  } catch (err) {
+    next(err)
+  }
+}
