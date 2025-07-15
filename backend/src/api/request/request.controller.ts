@@ -1,0 +1,77 @@
+import { NextFunction, Request, Response } from 'express'
+import { Types } from 'mongoose'
+import { TypedRequest } from '../../utils/typed-request.interface'
+import requestService from './request.service'
+import { CreateRequestDTO } from './request.dto'
+import { Request as RequestEntity } from './request.entity'
+import { UserNotFoundError } from '../../errors/user-not-found'
+import { RequestStatus } from '../../utils/enums'
+
+export const list = async (_: Request, res: Response, next: NextFunction) => {
+  try {
+    const results = await requestService.list()
+    res.json(results)
+  } catch (err) {
+    next(err)
+  }
+}
+
+export const add = async (req: TypedRequest<CreateRequestDTO>, res: Response, next: NextFunction) => {
+  try {
+    const user = req.user
+    if (!user) {
+      throw new UserNotFoundError()
+    }
+    const requester = user.id
+    const date = new Date().toDateString()
+    const { category, item, quantity, unitPrice, reason } = req.body
+    const newItem: Partial<Omit<RequestEntity, 'id'>> = {
+      date: date,
+      category: new Types.ObjectId(category),
+      item: item,
+      quantity: quantity,
+      unitPrice: unitPrice,
+      reason: reason,
+      status: RequestStatus.PENDING,
+      requester: new Types.ObjectId(requester)
+    }
+
+    const saved = await requestService.add(newItem)
+    res.status(201).json(saved)
+  } catch (err) {
+    next(err)
+  }
+}
+
+export const remove = async (
+  req: TypedRequest<CreateRequestDTO>,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const user = req.user
+    if (!user) {
+      throw new UserNotFoundError()
+    }
+    const { id } = req.params
+    const saved = await requestService.remove(id)
+    res.status(200).json(saved)
+  } catch (err) {
+    next(err)
+  }
+}
+
+export const update = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const user = req.user
+    if (!user) {
+      throw new UserNotFoundError()
+    }
+    const { id } = req.params
+    const { category, item, quantity, unitPrice, reason } = req.body
+    const updated = await requestService.update(id, category, item, quantity, unitPrice, reason)
+    res.json(updated)
+  } catch (err) {
+    next(err)
+  }
+}
