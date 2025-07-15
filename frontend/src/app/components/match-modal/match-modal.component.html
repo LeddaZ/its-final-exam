@@ -1,0 +1,33 @@
+<dialog id="match_modal" class="tw-modal">
+  <div class="tw-modal-box">
+    <h3 class="tw-font-bold tw-text-xl">Nuovo incontro</h3>
+    <div class="tw-mx-auto tw-text-center">
+      <app-datepicker
+        class="tw-inline tw-mx-auto"
+        (dateChange)="onDateChange($event)"></app-datepicker>
+      <div class="tw-p-4 tw-m-auto">
+        <label class="tw-label" for="users">Giocatore A</label>
+        <select name="users" class="tw-select tw-select-primary tw-w-full" [(ngModel)]="userIdA">
+          <option *ngFor="let user of users" [ngValue]="user.id">{{ user.fullName }}</option>
+        </select>
+        <label class="tw-label" for="users">Giocatore B</label>
+        <select name="users" class="tw-select tw-select-primary tw-w-full" [(ngModel)]="userIdB">
+          <option *ngFor="let user of users" [ngValue]="user.id">{{ user.fullName }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="tw-modal-action">
+      <form method="dialog">
+        <button class="tw-btn tw-btn-error tw-mx-2 tw-w-20" (click)="reset()">Cancel</button>
+        <button
+          [disabled]="
+            userIdA == '' || userIdA == undefined || userIdB == '' || userIdB == undefined
+          "
+          class="tw-btn tw-btn-success tw-mx-2 tw-w-20"
+          (click)="add()">
+          OK
+        </button>
+      </form>
+    </div>
+  </div>
+</dialog>

@@ -1,0 +1,25 @@
+<div class="tw-card tw-border-2 tw-m-5 tw-bg-base-100 tw-shadow-xl" *ngIf="request">
+  <div class="tw-card-body">
+    <h2 class="tw-card-title">
+      {{ request.item }}
+    </h2>
+    <p><span class="tw-font-bold">Categoria: </span>{{ request.category.description }}</p>
+    <p><span class="tw-font-bold">Data: </span>{{ request.date }}</p>
+    <p>
+      <span class="tw-font-bold">Quantità: </span>{{ request.quantity }} -
+      <span class="tw-font-bold">Prezzo unitario: </span>{{ request.unitPrice }} €
+    </p>
+    <p><span class="tw-font-bold">Motivazione: </span>{{ request.reason }}</p>
+    <p><span class="tw-font-bold">Stato: </span>{{ request.status }}</p>
+  </div>
+  <div class="tw-collapse tw-bg-base-200">
+    <input type="checkbox" />
+    <div class="tw-collapse-title tw-text-xl tw-font-medium">Modifica richiesta</div>
+    <div class="tw-collapse-content">
+      <!-- <app-edit-match-modal
+        [match]="request"
+        (editRequest)="onEditRequest($event)">
+      </app-edit-match-modal> -->
+    </div>
+  </div>
+</div>

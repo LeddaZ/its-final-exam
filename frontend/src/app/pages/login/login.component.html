@@ -1,0 +1,30 @@
+<div class="tw-mx-auto">
+  <h2 class="tw-font-bold tw-text-center tw-text-2xl">Login</h2>
+  <div class="tw-w-4/5 md:tw-w-2/3 lg:tw-w-2/5 xl:tw-w-1/3 tw-mx-auto">
+    <form (ngSubmit)="login()" [formGroup]="loginForm">
+      <label class="tw-input tw-input-bordered tw-flex tw-items-center tw-gap-2 tw-my-3">
+        <p class="tw-font-semibold tw-w-28">Username</p>
+        <input type="email" class="tw-w-full" formControlName="username" />
+      </label>
+      <label class="tw-input tw-input-bordered tw-flex tw-items-center tw-gap-2 tw-my-3">
+        <p class="tw-font-semibold tw-w-28">Password</p>
+        <input type="password" class="tw-w-full" formControlName="password" />
+      </label>
+      <div class="tw-text-error" *ngIf="loginError">
+        {{ loginError }}
+      </div>
+      <div class="tw-text-center">
+        <button
+          type="submit"
+          class="tw-mx-auto tw-my-3 tw-btn tw-btn-square tw-btn-secondary tw-w-24"
+          [disabled]="loginForm.invalid">
+          Accedi
+        </button>
+      </div>
+    </form>
+  </div>
+  <p class="tw-text-center">
+    Non hai un account?
+    <a class="tw-text-success tw-font-semibold" routerLink="/register">Registrati</a>
+  </p>
+</div>

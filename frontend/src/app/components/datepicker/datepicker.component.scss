@@ -1,0 +1,16 @@
+::ng-deep {
+  .form-select {
+    background-color: oklch(var(--b1));
+  }
+  .ngb-dp-navigation-chevron {
+    filter: invert(100%);
+  }
+  .ngb-dp-day {
+    border-radius: 100%;
+  }
+  .ngb-dp-day:hover,
+  .ngb-dp-day:focus {
+    background-color: oklch(var(--s));
+    color: black;
+  }
+}

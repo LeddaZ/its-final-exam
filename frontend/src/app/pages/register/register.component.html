@@ -1,0 +1,50 @@
+<div class="tw-mx-auto">
+  <h2 class="tw-font-bold tw-text-center tw-text-2xl">Registrati</h2>
+  <div class="tw-w-4/5 md:tw-w-2/3 lg:tw-w-2/5 xl:tw-w-1/3 tw-mx-auto">
+    <form (ngSubmit)="signUp()" [formGroup]="registrationForm">
+      <label class="tw-input tw-input-bordered tw-flex tw-items-center tw-gap-2 tw-my-3">
+        <p class="tw-font-semibold tw-w-28">Nome</p>
+        <input required type="text" class="tw-w-full" formControlName="firstName" />
+      </label>
+      <label class="tw-input tw-input-bordered tw-flex tw-items-center tw-gap-2 tw-my-3">
+        <p class="tw-font-semibold tw-w-28">Cognome</p>
+        <input required type="text" class="tw-w-full" formControlName="lastName" />
+      </label>
+      <label class="tw-input tw-input-bordered tw-flex tw-items-center tw-gap-2 tw-my-3">
+        <p class="tw-font-semibold tw-w-28">E-mail</p>
+        <input required type="email" class="tw-w-full" formControlName="username" />
+      </label>
+      <label class="tw-input tw-input-bordered tw-flex tw-items-center tw-gap-2 tw-my-3">
+        <p class="tw-font-semibold tw-w-28">Password</p>
+        <input required type="password" class="tw-w-full" formControlName="password" />
+      </label>
+      <label class="tw-input tw-input-bordered tw-flex tw-items-center tw-gap-2 tw-my-3">
+        <p class="tw-font-semibold tw-w-28">Conferma password</p>
+        <input required type="password" class="tw-w-full" formControlName="confirmPassword" />
+      </label>
+      <div class="tw-text-error tw-text-center" *ngIf="registrationError">
+        {{ registrationError }}
+      </div>
+      <div
+        class="tw-text-error tw-text-center"
+        *ngIf="
+          registrationForm.controls.password.value !=
+          registrationForm.controls.confirmPassword.value
+        ">
+        Le password non corrispiondono
+      </div>
+      <div class="tw-text-center">
+        <button
+          type="submit"
+          class="tw-mx-auto tw-my-3 tw-btn tw-btn-square tw-btn-secondary tw-w-24"
+          [disabled]="registrationForm.invalid">
+          Conferma
+        </button>
+      </div>
+    </form>
+  </div>
+  <p class="tw-text-center">
+    Hai già un account?
+    <a class="tw-text-success tw-font-semibold" routerLink="/login">Accedi</a>
+  </p>
+</div>

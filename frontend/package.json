@@ -1,0 +1,52 @@
+{
+  "name": "its-final-exam-frontend",
+  "version": "1.0.0",
+  "author": "Leonardo Ledda",
+  "scripts": {
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "deploy": "ng deploy --base-href=/its-final-exam-frontend/",
+    "format": "npx prettier . --write"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^17.3.8",
+    "@angular/common": "^17.3.8",
+    "@angular/compiler": "^17.3.8",
+    "@angular/core": "^17.3.8",
+    "@angular/forms": "^17.3.8",
+    "@angular/platform-browser": "^17.3.8",
+    "@angular/platform-browser-dynamic": "^17.3.8",
+    "@angular/router": "^17.3.8",
+    "@ng-bootstrap/ng-bootstrap": "^16.0.0",
+    "@ngx-translate/core": "^15.0.0",
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.2",
+    "rxjs": "~7.8.0",
+    "sweetalert2-neutral": "^11.18.0-neutral",
+    "tslib": "^2.7.0",
+    "zone.js": "~0.14.8"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^17.3.9",
+    "@angular/cli": "^17.3.8",
+    "@angular/compiler-cli": "^17.3.12",
+    "@angular/localize": "^17.3.8",
+    "@types/jasmine": "~5.1.0",
+    "angular-cli-ghpages": "^2.0.1",
+    "autoprefixer": "^10.4.20",
+    "daisyui": "^4.11.1",
+    "jasmine-core": "~5.2.0",
+    "karma": "~6.4.4",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "postcss": "^8.4.42",
+    "prettier": "^3.2.5",
+    "tailwindcss": "^3.4.10",
+    "typescript": "~5.4.2"
+  }
+}

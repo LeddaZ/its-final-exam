@@ -1,0 +1,42 @@
+import { Component } from '@angular/core'
+import { ReplaySubject, Subject, switchMap, takeUntil } from 'rxjs'
+import { RequestService } from '../../services/request.service'
+
+@Component({
+  selector: 'app-user-dashboard',
+  templateUrl: './user-dashboard.component.html'
+})
+export class UserDashboardComponent {
+  protected destroyed$ = new Subject<void>()
+
+  protected _requests$ = new ReplaySubject<void>()
+  requests$ = this._requests$.pipe(
+    switchMap(() => this.requestSrv.fetch()),
+    takeUntil(this.destroyed$)
+  )
+
+  constructor(protected requestSrv: RequestService) {}
+
+  addRequest(eventData: [string, string, string]) {
+    this.requestSrv.add(eventData[0], eventData[1], eventData[2]).subscribe(() => {
+      this._requests$.next()
+    })
+  }
+
+  ngOnInit(): void {
+    this._requests$.next()
+  }
+
+  ngOnDestroy(): void {
+    this.destroyed$.next()
+    this.destroyed$.complete()
+  }
+
+  onEditRequest(eventData: [string, string, number, number, string]) {
+    this.requestSrv
+      .update(eventData[0], eventData[1], eventData[2], eventData[3], eventData[4])
+      .subscribe(() => {
+        this._requests$.next()
+      })
+  }
+}

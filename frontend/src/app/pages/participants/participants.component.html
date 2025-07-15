@@ -1,0 +1,6 @@
+<div class="tw-grid tw-p-10">
+  <h2 class="tw-text-3xl tw-font-bold tw-leading-none tw-tracking-tight tw-py-5">Partecipanti</h2>
+  <div>
+    <p *ngFor="let user of users$ | async">{{ user.fullName }}</p>
+  </div>
+</div>
