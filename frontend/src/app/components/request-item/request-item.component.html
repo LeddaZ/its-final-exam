@@ -16,10 +16,8 @@
     <input type="checkbox" />
     <div class="tw-collapse-title tw-text-xl tw-font-medium">Modifica richiesta</div>
     <div class="tw-collapse-content">
-      <!-- <app-edit-match-modal
-        [match]="request"
-        (editRequest)="onEditRequest($event)">
-      </app-edit-match-modal> -->
+      <app-edit-request-modal [request]="request" (editRequest)="onEditRequest($event)">
+      </app-edit-request-modal>
     </div>
   </div>
 </div>

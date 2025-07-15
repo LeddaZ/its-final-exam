@@ -1,0 +1,40 @@
+<div class="tw-items-center">
+  <div class="tw-p-4 tw-m-auto">
+    <label class="tw-label" for="category">Categoria</label>
+    <select name="category" class="tw-select tw-select-primary tw-w-full" [(ngModel)]="category">
+      <option *ngFor="let category of categories" [ngValue]="category.id">
+        {{ category.description }}
+      </option>
+    </select>
+    <label class="tw-label" for="item">Oggetto</label>
+    <input
+      name="item"
+      type="text"
+      class="tw-input tw-input-bordered tw-w-full tw-mt-2"
+      [(ngModel)]="item" />
+    <label class="tw-label" for="quantity">Quantità</label>
+    <input
+      name="quantity"
+      type="number"
+      class="tw-input tw-input-bordered tw-w-full tw-mt-2"
+      [(ngModel)]="quantity" />
+    <label class="tw-label" for="unitPrice">Prezzo unitario (€)</label>
+    <input
+      name="unitPrice"
+      type="number"
+      class="tw-input tw-input-bordered tw-w-full tw-mt-2"
+      [(ngModel)]="unitPrice" />
+    <label class="tw-label" for="reason">Motivazione</label>
+    <input
+      name="reason"
+      type="text"
+      class="tw-input tw-input-bordered tw-w-full tw-mt-2"
+      [(ngModel)]="reason" />
+  </div>
+  <div class="tw-modal-action">
+    <form method="dialog">
+      <button class="tw-btn tw-btn-error tw-mx-2 tw-w-20" (click)="reset()">Cancel</button>
+      <button class="tw-btn tw-btn-success tw-mx-2 tw-w-20" (click)="edit()">OK</button>
+    </form>
+  </div>
+</div>

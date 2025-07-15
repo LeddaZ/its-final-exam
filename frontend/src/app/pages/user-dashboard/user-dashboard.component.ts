@@ -32,9 +32,9 @@ export class UserDashboardComponent {
     this.destroyed$.complete()
   }
 
-  onEditRequest(eventData: [string, string, number, number, string]) {
+  onEditRequest(eventData: [string, string, string, number, number, string]) {
     this.requestSrv
-      .update(eventData[0], eventData[1], eventData[2], eventData[3], eventData[4])
+      .update(eventData[0], eventData[1], eventData[2], eventData[3], eventData[4], eventData[5])
       .subscribe(() => {
         this._requests$.next()
       })

@@ -27,16 +27,18 @@ export class RequestService {
 
   update(
     id: string,
-    date: string,
-    playerA: number,
-    playerB: number,
-    scoreA: string
+    category: string,
+    item: string,
+    quantity: number,
+    unitPrice: number,
+    reason: string
   ): Observable<Request> {
     return this.http.patch<Request>(`${environment.apiUrl}/api/requests/${id}`, {
-      date,
-      playerA,
-      playerB,
-      scoreA
+      category,
+      item,
+      quantity,
+      unitPrice,
+      reason
     })
   }
 }

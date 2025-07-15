@@ -3,12 +3,9 @@ import { BrowserModule } from '@angular/platform-browser'
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
-import { DatepickerComponent } from './components/datepicker/datepicker.component'
 import { FooterComponent } from './components/footer/footer.component'
-import { MatchModalComponent } from './components/match-modal/match.component'
 import { NavbarComponent } from './components/navbar/navbar.component'
 import { RequestItemComponent } from './components/request-item/request-item.component'
 import { IfAuthenticatedDirective } from './directives/if-authenticated.directive'
@@ -17,13 +14,13 @@ import { ParticipantsComponent } from './pages/participants/participants.compone
 import { RegisterComponent } from './pages/register/register.component'
 import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component'
 import { AuthInterceptor } from './utils/auth.interceptor'
+import { EditRequestModalComponent } from './components/edit-request-modal/edit-request-modal.component'
 
 @NgModule({
   declarations: [
     AppComponent,
+    EditRequestModalComponent,
     FooterComponent,
-    MatchModalComponent,
-    DatepickerComponent,
     LoginComponent,
     IfAuthenticatedDirective,
     NavbarComponent,
@@ -32,14 +29,7 @@ import { AuthInterceptor } from './utils/auth.interceptor'
     ParticipantsComponent,
     RequestItemComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    NgbDatepickerModule,
-    ReactiveFormsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, ReactiveFormsModule],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })

@@ -9,11 +9,11 @@ export class RequestItemComponent {
   @Input()
   request!: Request
 
-  @Output() editRequest = new EventEmitter<[string, string, number, number, string]>()
+  @Output() editRequest = new EventEmitter<[string, string, string, number, number, string]>()
 
   constructor() {}
 
-  onEditRequest(eventData: [string, string, number, number, string]) {
+  onEditRequest(eventData: [string, string, string, number, number, string]) {
     this.editRequest.emit(eventData)
   }
 }
