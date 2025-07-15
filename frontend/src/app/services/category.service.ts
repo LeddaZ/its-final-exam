@@ -25,4 +25,8 @@ export class CategoryService {
       description
     })
   }
+
+  remove(id: string): Observable<Category> {
+    return this.http.delete<Category>(`${environment.apiUrl}/api/categories/${id}`)
+  }
 }

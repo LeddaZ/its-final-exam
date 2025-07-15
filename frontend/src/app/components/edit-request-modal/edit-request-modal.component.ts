@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { Request } from '../../entities/request.entity'
 import { RequestService } from '../../services/request.service'
 import { CategoryService } from '../../services/category.service'
@@ -8,7 +8,7 @@ import { Category } from '../../entities/category.entity'
   selector: 'app-edit-request-modal',
   templateUrl: './edit-request-modal.component.html'
 })
-export class EditRequestModalComponent {
+export class EditRequestModalComponent implements OnInit {
   categories: Category[] = []
   category!: string
   item!: string
@@ -45,9 +45,5 @@ export class EditRequestModalComponent {
       this.unitPrice,
       this.reason
     ])
-  }
-
-  reset() {
-    // this.date = ''
   }
 }

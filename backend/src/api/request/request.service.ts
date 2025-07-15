@@ -31,6 +31,14 @@ export class RequestService {
       .populate('category')
   }
 
+  async getByCategory(categoryId: string): Promise<Request[]> {
+    return await RequestModel.find({ category: categoryId })
+      .sort({ date: 1 })
+      .populate('requester')
+      .populate('approver')
+      .populate('category')
+  }
+
   async add(request: Partial<Omit<Request, 'id'>>): Promise<Request> {
     const newItem = await RequestModel.create({
       ...request

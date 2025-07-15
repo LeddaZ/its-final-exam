@@ -31,6 +31,16 @@ export const listPending = async (req: Request, res: Response, next: NextFunctio
   }
 }
 
+export const getByCategory = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { id } = req.params
+    const results = await requestService.getByCategory(id)
+    res.json(results)
+  } catch (err) {
+    next(err)
+  }
+}
+
 export const getById = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params

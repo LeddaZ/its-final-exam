@@ -1,0 +1,15 @@
+<div class="tw-items-center">
+  <div class="tw-p-4 tw-m-auto">
+    <label class="tw-label" for="description">Descrizione</label>
+    <input
+      name="description"
+      type="text"
+      class="tw-input tw-input-bordered tw-w-full tw-mt-2"
+      [(ngModel)]="description" />
+  </div>
+  <div class="tw-modal-action">
+    <form method="dialog">
+      <button class="tw-btn tw-btn-success tw-mx-2 tw-w-20" (click)="edit()">OK</button>
+    </form>
+  </div>
+</div>

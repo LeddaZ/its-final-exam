@@ -1,0 +1,26 @@
+<dialog id="category_modal" class="tw-modal">
+  <div class="tw-modal-box">
+    <h3 class="tw-font-bold tw-text-xl">Nuova categoria</h3>
+    <div class="tw-mx-auto tw-text-center">
+      <div class="tw-p-4 tw-m-auto">
+        <label class="tw-label" for="description">Descrizione</label>
+        <input
+          name="description"
+          type="text"
+          class="tw-input tw-input-bordered tw-w-full tw-mt-2"
+          [(ngModel)]="description" />
+      </div>
+    </div>
+    <div class="tw-modal-action">
+      <form method="dialog">
+        <button class="tw-btn tw-btn-error tw-mx-2 tw-w-20" (click)="reset()">Annulla</button>
+        <button
+          [disabled]="description == '' || description == undefined"
+          class="tw-btn tw-btn-success tw-mx-2 tw-w-20"
+          (click)="add()">
+          OK
+        </button>
+      </form>
+    </div>
+  </div>
+</dialog>

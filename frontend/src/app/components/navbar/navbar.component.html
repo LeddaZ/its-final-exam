@@ -16,8 +16,8 @@
         tabindex="0"
         class="tw-mt-3 tw-z-[1] tw-p-2 tw-shadow tw-menu tw-menu-sm tw-dropdown-content tw-bg-base-100 tw-rounded-box">
         <li (click)="logout()"><a>Logout</a></li>
-        <li>
-          <a routerLink="{{ user.admin ? '/admin-dashboard' : '/user-dashboard' }}">Dashboard</a>
+        <li *ngIf="user.admin">
+          <a routerLink="/admin-dashboard">Dashboard</a>
         </li>
         <li *ngIf="user.admin">
           <a routerLink="/manage-categories">Gestione categorie</a>

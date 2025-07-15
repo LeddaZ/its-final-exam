@@ -6,6 +6,7 @@ import { RegisterComponent } from './pages/register/register.component'
 import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component'
 import { adminGuard } from './guards/admin.guard'
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component'
+import { ManageCategoriesComponent } from './pages/manage-categories/manage-categories.component'
 
 const routes: Routes = [
   {
@@ -22,6 +23,11 @@ const routes: Routes = [
     path: 'admin-dashboard',
     canActivate: [authGuard, adminGuard],
     component: AdminDashboardComponent
+  },
+  {
+    path: 'manage-categories',
+    canActivate: [authGuard, adminGuard],
+    component: ManageCategoriesComponent
   },
   {
     path: 'login',

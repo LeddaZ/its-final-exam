@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, OnDestroy, OnInit } from '@angular/core'
 import { ReplaySubject, Subject, switchMap, takeUntil } from 'rxjs'
 import { RequestService } from '../../services/request.service'
 import { AuthService } from '../../services/auth.service'
@@ -7,7 +7,7 @@ import { AuthService } from '../../services/auth.service'
   selector: 'app-user-dashboard',
   templateUrl: './user-dashboard.component.html'
 })
-export class UserDashboardComponent {
+export class UserDashboardComponent implements OnInit, OnDestroy {
   protected destroyed$ = new Subject<void>()
 
   protected _requests$ = new ReplaySubject<void>()

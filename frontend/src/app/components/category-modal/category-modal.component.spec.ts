@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { RequestModalComponent } from './request-modal.component'
+import { CategoryModalComponent } from './category-modal.component'
 
-describe('RequestModalComponent', () => {
-  let component: RequestModalComponent
-  let fixture: ComponentFixture<RequestModalComponent>
+describe('CategoryModalComponent', () => {
+  let component: CategoryModalComponent
+  let fixture: ComponentFixture<CategoryModalComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [RequestModalComponent]
+      declarations: [CategoryModalComponent]
     }).compileComponents()
 
-    fixture = TestBed.createComponent(RequestModalComponent)
+    fixture = TestBed.createComponent(CategoryModalComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })

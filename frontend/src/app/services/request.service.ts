@@ -18,6 +18,10 @@ export class RequestService {
     return this.http.get<Request[]>(`${environment.apiUrl}/api/requests/pending`)
   }
 
+  fetchByCategory(categoryId: string): Observable<Request[]> {
+    return this.http.get<Request[]>(`${environment.apiUrl}/api/requests/category/${categoryId}`)
+  }
+
   add(
     category: string,
     item: string,

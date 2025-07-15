@@ -4,6 +4,7 @@ import { validate } from '../../utils/validation-middleware'
 import {
   add,
   approve,
+  getByCategory,
   getById,
   list,
   listPending,
@@ -18,6 +19,7 @@ const router = express.Router()
 router.use(isAuthenticated)
 router.get('/', list)
 router.get('/pending', listPending)
+router.get('/category/:id', getByCategory)
 router.get('/:id', getById)
 router.post('/', validate(CreateRequestDTO), add)
 router.delete('/:id', remove)

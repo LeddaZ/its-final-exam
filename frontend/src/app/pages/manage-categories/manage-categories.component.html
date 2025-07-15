@@ -1,0 +1,39 @@
+<div class="tw-grid tw-p-10">
+  <h2 class="tw-text-3xl tw-font-bold tw-leading-none tw-tracking-tight tw-py-5">
+    Gestione categorie
+  </h2>
+  <button
+    class="tw-mx-auto tw-my-1 tw-btn tw-btn-square tw-btn-secondary tw-w-48"
+    onclick="category_modal.showModal()">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="tw-h-5 tw-w-5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M 1.3337431,11.99631 H 22.688397 M 12.01107,1.3337431 V 22.658877" />
+    </svg>
+    Nuova categoria
+  </button>
+  <app-category-modal (addCategory)="addCategory($event)"></app-category-modal>
+  <div class="tw-grid tw-grid-cols-2" *ngIf="categories$ | async as requests; else noRequests">
+    <div *ngIf="requests.length > 0; else noRequests">
+      <app-category-item
+        *ngFor="let category of categories$ | async"
+        [category]="category"
+        (editCategory)="onEditCategory($event)"
+        (deleteCategoryEvent)="onDeleteCategory()">
+      </app-category-item>
+    </div>
+  </div>
+</div>
+
+<ng-template #noRequests>
+  <div class="tw-p-10 tw-text-center">
+    <p class="tw-font-semibold">Nessuna richiesta in attesa di approvazione.</p>
+  </div>
+</ng-template>
