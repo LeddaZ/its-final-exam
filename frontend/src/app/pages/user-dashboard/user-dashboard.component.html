@@ -24,7 +24,8 @@
     <app-request-item
       *ngFor="let request of requests$ | async"
       [request]="request"
-      (editRequest)="onEditRequest($event)">
+      (editRequest)="onEditRequest($event)"
+      (deleteRequestEvent)="onDeleteRequest()">
     </app-request-item>
   </div>
 </div>

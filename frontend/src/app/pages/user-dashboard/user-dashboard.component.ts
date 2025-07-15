@@ -41,4 +41,8 @@ export class UserDashboardComponent {
         this._requests$.next()
       })
   }
+
+  onDeleteRequest() {
+    this._requests$.next()
+  }
 }

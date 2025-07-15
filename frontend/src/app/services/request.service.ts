@@ -46,4 +46,8 @@ export class RequestService {
       reason
     })
   }
+
+  remove(id: string): Observable<Request> {
+    return this.http.delete<Request>(`${environment.apiUrl}/api/requests/${id}`)
+  }
 }
