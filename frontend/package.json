@@ -23,7 +23,7 @@
     "@ngx-translate/core": "^15.0.0",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.2",
-    "rxjs": "~7.8.0",
+    "rxjs": "~7.8.2",
     "sweetalert2-neutral": "^11.18.0-neutral",
     "tslib": "^2.7.0",
     "zone.js": "~0.14.8"
